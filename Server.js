@@ -24,14 +24,10 @@ var smtpTransport = nodemailer.createTransport("SMTP",{
 /*------------------Routing Started ------------------------*/
 
 var callback = function(req,res){
-    res.sendFile(__dirname+'/index2.html');
-};
-var callback2 = function(req,res){
     res.sendFile(__dirname+'/index.html');
 };
 
-app.get('/new',callback);
-app.get('/',callback2);
+app.get('/',callback);
 app.use("/assets",express.static(__dirname + "/assets"));
 app.get('/send',function(req,res){
 	var mailOptions={
