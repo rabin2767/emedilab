@@ -49,4 +49,6 @@ app.get('/send',function(req,res){
 
 /*--------------------Routing Over----------------------------*/
 
-app.listen();
+app.listen(process.env.PORT,function(){
+	console.log("Express Started");
+});
