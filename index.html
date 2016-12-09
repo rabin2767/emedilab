@@ -12,61 +12,59 @@
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script>
-function sendmail(time) {
-		var to=$("#to").val();
-		var subject="Immediate Sync Up !";
-		var text="Please Join Using the link at "+time+" hrs : https://meet.jit.si/MeetAt"+time+"hrs";
-		$("#message").text("Sending E-mail...Please wait");
-		$.get("https://emedilab.herokuapp.com/send",{to:to,subject:subject,text:text},function(data){
-		if(data=="sent")
-		{
-			$("#message").empty().html("<p>Email is been sent at "+to+" !</p>");
-		}
-});
-
-}
-function sendmail2(time) {
-		var to=$("#to2").val();
-		var subject="Immediate Sync Up !";
-		var text="Please Join Using the link at "+time+" hrs : https://meet.jit.si/MeetAt"+time+"hrs";
-		$("#message2").text("Sending E-mail...Please wait");
-		$.get("https://emedilab.herokuapp.com/send",{to:to,subject:subject,text:text},function(data){
-		if(data=="sent")
-		{
-			$("#message2").empty().html("<p>Email is been sent at "+to+" !</p>");
-		}
-});
-
-}
-</script>
+	<script>
+	function sendmail(time) {
+			var to=$("#to").val();
+			var subject="Immediate Sync Up !";
+			var text="Please Join Using the link at "+time+" hrs : https://meet.jit.si/MeetAt"+time+"hrs";
+			$("#message").text("Sending E-mail...Please wait");
+			$.get("https://emedilab.herokuapp.com/send",{to:to,subject:subject,text:text},function(data){
+			if(data=="sent")
+			{
+				$("#message").empty().html("<p>Email is been sent at "+to+" !</p>");
+			}
+	});
+	}
+	function sendmail2(time) {
+			var to=$("#to2").val();
+			var subject="Immediate Sync Up !";
+			var text="Please Join Using the link at "+time+" hrs : https://meet.jit.si/MeetAt"+time+"hrs";
+			$("#message2").text("Sending E-mail...Please wait");
+			$.get("https://emedilab.herokuapp.com/send",{to:to,subject:subject,text:text},function(data){
+			if(data=="sent")
+			{
+				$("#message2").empty().html("<p>Email is been sent at "+to+" !</p>");
+			}
+	});
+	}
+	</script>
   </head>
-<script>
-function myFunction(time) {
-	var d = new Date();
-	var n = d.getHours();
-	if(time==n)
-	{
+	<script>
+	function myFunction(time) {
+		var d = new Date();
+		var n = d.getHours();
+		if(time==n)
+		{
+			$("#myModal").modal();
+			$("#linktojoin").empty().html('<a style="text-decoration: none; color:white;" href="https://meet.jit.si/MeetAt'+time+'hrs">Join Now</a>');
+			$("#sendmailbutton").empty().html('<button type="button" class="btn btn-primary btn-lg btn-block" onclick="sendmail(\''+time+'\')" id="send_email">Invite</button>');
+			
+		}
+		else
+		{
+			$("#myModals").modal();
+			$("#sendmailbutton2").empty().html('<button type="button" class="btn btn-primary btn-lg btn-block" onclick="sendmail2(\''+time+'\')" id="send_email">Invite</button>');
+		}
+
+	}
+	</script>
+	<script>
+	function myFunction2(time) {
 		$("#myModal").modal();
 		$("#linktojoin").empty().html('<a style="text-decoration: none; color:white;" href="https://meet.jit.si/MeetAt'+time+'hrs">Join Now</a>');
 		$("#sendmailbutton").empty().html('<button type="button" class="btn btn-primary btn-lg btn-block" onclick="sendmail(\''+time+'\')" id="send_email">Invite</button>');
-		
 	}
-	else
-	{
-		$("#myModals").modal();
-		$("#sendmailbutton2").empty().html('<button type="button" class="btn btn-primary btn-lg btn-block" onclick="sendmail2(\''+time+'\')" id="send_email">Invite</button>');
-	}
-
-}
-</script>
-<script>
-function myFunction2(time) {
-	$("#myModal").modal();
-	$("#linktojoin").empty().html('<a style="text-decoration: none; color:white;" href="https://meet.jit.si/MeetAt'+time+'hrs">Join Now</a>');
-	$("#sendmailbutton").empty().html('<button type="button" class="btn btn-primary btn-lg btn-block" onclick="sendmail(\''+time+'\')" id="send_email">Invite</button>');
-}
-</script>
+	</script>
 
 
   <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -746,13 +744,9 @@ function myFunction2(time) {
 							</div>
 						</div>
 						<div class="container">
-  
- 
-
 						  <!-- Modal -->
 						  <div class="modal fade" id="myModal" role="dialog">
 							<div class="modal-dialog modal-sm">
-							
 							  <!-- Modal content-->
 							  <div class="modal-content">
 								<div class="modal-header">
@@ -763,42 +757,33 @@ function myFunction2(time) {
 									<button type="button" class="btn btn-success btn-lg btn-block"><span id="linktojoin"></span></button>
 									<hr><br>
 									<input type="text" id="to" class="form-control" placeholder="Send Meeting Link To"><br>
-											<span id="sendmailbutton"></span>
-											<br>
-											<span id="message"></span>
+									<span id="sendmailbutton"></span><br>
+									<span id="message"></span>
 								</div>
 							  </div>
-							  
 							</div>
 						  </div>
-						  
 						</div>
-						
 						<!-- Modal -->
-  <div class="modal fade" id="myModals" role="dialog">
-    <div class="modal-dialog modal-sm">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Send Invites</h4>
-        </div>
-        <div class="modal-body">
-          <input type="text" id="to2" class="form-control" placeholder="Send Meeting Link To"><br>
-											<span id="sendmailbutton2"></span>
-											<br>
-											<span id="message2"></span>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-						
-						
+					  <div class="modal fade" id="myModals" role="dialog">
+						<div class="modal-dialog modal-sm">
+						  <!-- Modal content-->
+						  <div class="modal-content">
+							<div class="modal-header">
+							  <button type="button" class="close" data-dismiss="modal">&times;</button>
+							  <h4 class="modal-title">Send Invites</h4>
+							</div>
+							<div class="modal-body">
+							  <input type="text" id="to2" class="form-control" placeholder="Send Meeting Link To"><br>
+							  <span id="sendmailbutton2"></span><br>
+							  <span id="message2"></span>
+							</div>
+							<div class="modal-footer">
+							  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
+						  </div>
+						</div>
+					  </div>	
 			</div>
 		</div>
 	</section>
@@ -917,7 +902,7 @@ function myFunction2(time) {
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 text-center">
-						© Copyright E-Medilab
+						E-Medilab
                         <div class="credits">
                             Designed by Nobody Built by Somebody Used By YOU BUDDY! :)
                         </div>
@@ -927,12 +912,10 @@ function myFunction2(time) {
 		</div>
 	</footer>
 	<!--/ footer-->
-    
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.easing.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/custom.js"></script>
     <script src="assets/contactform/contactform.js"></script>
-    
   </body>
 </html>
