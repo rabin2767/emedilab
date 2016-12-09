@@ -18,7 +18,7 @@ function sendmail(time) {
 		var subject="Immediate Sync Up !";
 		var text="Please Join Using the link at "+time+" hrs : https://meet.jit.si/MeetAt"+time+"hrs";
 		$("#message").text("Sending E-mail...Please wait");
-		$.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
+		$.get("https://emedilab.herokuapp.com/send",{to:to,subject:subject,text:text},function(data){
 		if(data=="sent")
 		{
 			$("#message").empty().html("<p>Email is been sent at "+to+" !</p>");
@@ -31,7 +31,7 @@ function sendmail2(time) {
 		var subject="Immediate Sync Up !";
 		var text="Please Join Using the link at "+time+" hrs : https://meet.jit.si/MeetAt"+time+"hrs";
 		$("#message2").text("Sending E-mail...Please wait");
-		$.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
+		$.get("https://emedilab.herokuapp.com/send",{to:to,subject:subject,text:text},function(data){
 		if(data=="sent")
 		{
 			$("#message2").empty().html("<p>Email is been sent at "+to+" !</p>");
